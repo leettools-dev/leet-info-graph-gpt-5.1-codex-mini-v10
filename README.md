@@ -16,8 +16,7 @@ Build a full-stack web application where users sign in with Google, submit resea
 
 ## Features
 
-*Features will be documented here as they are implemented.*
-
+- running docker stack and verifying UI.
 ## Getting Started
 
 ### Prerequisites

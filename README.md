@@ -26,7 +26,9 @@ Build a full-stack web application where users sign in with Google, submit resea
 
 ### Installation
 
-```bash
+- Set env var `API_URL` to http://localhost:8000
+- Run `./start.sh` to start backend and frontend (logs at `logs/*.log` and PIDs at `pids/*.pid`).
+
 # Installation instructions will be added
 ```
 

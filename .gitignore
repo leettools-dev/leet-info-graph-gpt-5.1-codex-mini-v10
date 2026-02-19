@@ -1,48 +1,18 @@
-# Dependencies
-node_modules/
-venv/
-.venv/
-.pytest_cache/
-__pycache__/
-*.py[cod]
-*.egg-info/
-*.egg
-build/
-dist/
-.eggs/
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Logs and runtime state
 logs/
 pids/
-*.log
-*.pid
-*.sqlite3
-*.sqlite
-
-# Environment
+*.pyc
+__pycache__/
 .env
-.env.*
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# IDE/editor configs
-.vscode/
-.idea/
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
-
-# OS files
+.venv/
+venv/
+node_modules/
 .DS_Store
-Thumbs.db
-
-# Docker
-docker-compose.override.yml
-
-# Generated documentation
-dist-docs/
+*.log
+*.sqlite3
+*.db
+.idea/
+.vscode/
+*.egg-info/
+/dist/
+/build/
+.pytest_cache/

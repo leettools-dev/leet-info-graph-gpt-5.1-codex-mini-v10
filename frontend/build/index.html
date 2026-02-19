@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Research Infographic Studio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+        margin: 0;
+        min-height: 100vh;
+        background: #0f172a;
+        color: #e2e8f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+      }
+      .card {
+        background: #1e293b;
+        border-radius: 16px;
+        box-shadow: 0 20px 45px rgba(15, 23, 42, 0.4);
+        max-width: 940px;
+        width: 100%;
+        padding: 2rem;
+      }
+      h1 {
+        margin-top: 0;
+        font-size: clamp(2rem, 3vw, 2.75rem);
+        color: #f8fafc;
+      }
+      p.lede {
+        color: #94a3b8;
+      }
+      .prompt {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
+      .sources {
+        list-style: none;
+        padding-left: 0;
+      }
+      .sources li {
+        margin-bottom: 0.5rem;
+        color: #cbd5f5;
+      }
+      .infographic {
+        margin-top: 1.5rem;
+        padding: 1rem;
+        background: #0ea5e9;
+        border-radius: 12px;
+        color: #0f172a;
+      }
+      .fetching {
+        font-size: 1.25rem;
+        color: #38bdf8;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <h1>Research Infographic Studio</h1>
+      <p class="lede">AI-generated infographic, article, and source bundle in one click.</p>
+      <section id="status">
+        <p class="fetching">Loading demo result...</p>
+      </section>
+    </main>
+    <script>
+      async function loadDemo() {
+        const statusEl = document.getElementById('status');
+        try {
+          const response = await fetch('http://localhost:8000/api/v1/demo-result');
+          if (!response.ok) {
+            throw new Error('Failed to fetch demo result');
+          }
+          const result = await response.json();
+          statusEl.innerHTML = `
+            <p class="prompt">Prompt: ${result.prompt}</p>
+            <div class="infographic">
+              <p><strong>Infographic ready</strong></p>
+              <p><a href="${result.infographic_url}" style="color: #0f172a; text-decoration: underline;">View Infographic</a></p>
+            </div>
+            <p>${result.article_excerpt}</p>
+            <h2>Sources</h2>
+            <ul class="sources">
+              ${result.sources.map((source) => `
+                <li>
+                  <a href="${source.url}" target="_blank" rel="noreferrer" style="color: #38bdf8;">${source.title}</a>
+                  <span>— ${source.publisher}</span>
+                </li>
+              `).join('')}
+            </ul>
+          `;
+        } catch (error) {
+          console.error(error);
+          statusEl.innerHTML = `<p class="fetching">Unable to load demo data.</p>`;
+        }
+      }
+      loadDemo();
+    </script>
+  </body>
+</html>
